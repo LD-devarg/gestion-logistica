@@ -8,7 +8,7 @@ Demo pública de un sistema web full-stack para la gestión operativa de una emp
 
 ## Demo en vivo
 
-🔗 **[(https://ld-devarg.github.io/gestion-logistica/)](#)** 
+🔗 **[Ver demo](https://ld-devarg.github.io/gestion-logistica/)** 
 
 **Usuarios de prueba:**
 
