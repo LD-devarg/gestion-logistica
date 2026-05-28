@@ -8,7 +8,7 @@ Demo pública de un sistema web full-stack para la gestión operativa de una emp
 
 ## Demo en vivo
 
-🔗 **[ver demo](#)** _(reemplazar por URL de Pages/Vercel)_
+🔗 **[(https://ld-devarg.github.io/gestion-logistica/)](#)** 
 
 **Usuarios de prueba:**
 
