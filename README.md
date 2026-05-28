@@ -1,60 +1,52 @@
-# Sistema de Gestión Logística — Demo
+# Sistema de Gestión Logística — Demo visual
 
-Demo pública de un sistema web full-stack para la gestión operativa de una empresa de transporte: clientes, proveedores, viajes, tarifas, gastos, preliquidaciones y liquidaciones, con un portal diferenciado para el equipo interno y para proveedores.
+Demo visual e interactiva de un sistema web para la gestión operativa de una empresa de transporte: clientes, proveedores, viajes, tarifas, gastos, preliquidaciones y liquidaciones, con un portal diferenciado para el equipo interno y para proveedores.
 
-> **Sobre esta demo:** este repositorio contiene una versión demostrativa, construida con datos ficticios y un alcance reducido, para que se pueda explorar la interfaz y la lógica del sistema sin exponer información real. Está basada en un proyecto que desarrollé y mantengo en producción para una empresa del rubro; ese proyecto original es privado por confidencialidad con el cliente.
+> **Sobre esta demo:** este repositorio contiene una versión demostrativa del frontend con datos simulados (mock). El objetivo es mostrar la interfaz, la navegación y las decisiones de diseño del producto, sin backend conectado: no hay login real, no se persisten datos. Está basada en un proyecto que desarrollé y mantengo en producción para una empresa del rubro; ese proyecto original es privado por confidencialidad con el cliente.
 
 ---
 
 ## Demo en vivo
 
-🔗 **[Ver demo](https://ld-devarg.github.io/gestion-logistica/)** 
+🔗 **[Ver demo](https://ld-devarg.github.io/gestion-logistica/)**
 
-**Usuarios de prueba:**
-
-| Rol | Usuario | Contraseña |
-|-----|---------|------------|
-| Administrador | `admin` | `demo1234` |
-| Proveedor | `proveedor` | `demo1234` |
-
-> Todos los datos visibles en la demo son ficticios.
+> Todos los datos visibles en la demo son ficticios. La demo es de solo lectura: las acciones de creación, edición o login no impactan en ningún backend.
 
 ---
 
 ## Qué muestra la demo
 
-- Registro y seguimiento de **viajes** por fecha, cliente, proveedor, tarifa, remito y estado operativo.
-- Gestión de **clientes, proveedores, salidas, tarifas y adicionales**.
-- Control de **gastos por proveedor** (combustible, adelantos, varios).
-- Generación de **preliquidaciones** por período con detalle de viajes, adicionales y gastos.
-- Gestión de **liquidaciones** con estado de pago, factura y fecha.
-- **Portal de proveedor** con vista de viajes propios, liquidaciones, documentación y perfil.
-- Autenticación con JWT y permisos diferenciados por rol.
+- Layouts diferenciados por rol (administrativo y proveedor).
+- Listado y detalle de **viajes** con campos de fecha, cliente, proveedor, tarifa, remito y estado operativo.
+- Gestión visual de **clientes, proveedores, salidas, tarifas y adicionales**.
+- Vistas de **gastos por proveedor** (combustible, adelantos, varios).
+- **Preliquidaciones** por período con detalle de viajes, adicionales y gastos.
+- **Liquidaciones** con estado de pago, factura y fecha.
+- **Portal de proveedor** con vista de viajes propios, liquidaciones y documentación.
 
 ---
 
 ## Stack técnico
 
-### Backend
+### Frontend (lo que se muestra en la demo)
+
+- **React** + **Vite**
+- **React Router** — ruteo y layouts diferenciados por rol
+- **Material UI** + **Tailwind CSS**
+- Datos simulados servidos desde el propio frontend
+
+### Backend del proyecto original (no incluido en esta demo)
+
 - **Python** + **Django 5** + **Django REST Framework**
 - **Simple JWT** — autenticación con refresh en cookie segura
 - **PostgreSQL**
 - **Celery** + **Redis** — tareas asíncronas
 - **Gunicorn** + **WhiteNoise**
-
-### Frontend
-- **React** + **Vite**
-- **React Router** — ruteo y layouts diferenciados por rol
-- **Axios** — cliente HTTP con interceptores de auth
-- **Material UI** + **Tailwind CSS**
-
-### Despliegue
-- **Railway** (backend, base de datos, Redis)
-- Frontend servido como sitio estático
+- Despliegue en **Railway**
 
 ---
 
-## Arquitectura
+## Arquitectura del proyecto original
 
 ```
 ┌─────────────────┐      REST/JSON      ┌──────────────────┐
@@ -94,30 +86,11 @@ El frontend separa vistas por módulo y aplica layouts diferenciados (administra
 ## Probar localmente
 
 ### Requisitos
-- Python 3.12+
 - Node.js 20+
-- PostgreSQL
-- Redis
 
-### Backend
+### Instalación
 
 ```bash
-cd backend
-python -m venv venv
-source venv/bin/activate     # En Windows: .\venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-cp .env.example .env
-python manage.py migrate
-python manage.py loaddata fixtures/demo.json    # carga datos ficticios
-python manage.py runserver
-```
-
-Disponible en `http://127.0.0.1:8000`
-
-### Frontend
-
-```bash
-cd frontend
 npm install
 npm run dev
 ```
